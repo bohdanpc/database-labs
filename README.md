@@ -1,3 +1,4 @@
 
-database-labs\n
+database-labs
+
 variant 11
