@@ -1,0 +1,4 @@
+*.pyc
+*.idea
+lab*/*.pyc
+lab*/*.idea
