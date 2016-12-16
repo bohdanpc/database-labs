@@ -1,22 +1,15 @@
 {
 	"bank_tab": [
-		{"bank_name": "Privat", "isSolven": "true"},
-		{"bank_name": "otpBank", "isSolvent": "true"}
+		{"bank_name": "'Privat'", "is_solvent": "true"},
+		{"bank_name": "'otpBank'", "is_solvent": "true"}
 	],
 	"client_tab": [
-		{"product": "1", "count": "2", "orderer": "1", "terms": "10.12.2016"},
-		{"product": "2", "count": "1", "orderer": "3", "terms": "11.10.2016"},
-		{"product": "3", "count": "10", "orderer": "2", "terms": "10.09.2016"},
-		{"product": "4", "count": "3", "orderer": "1", "terms": "25.11.2016"}
+		{"client_name":"'Margaret'", "age": "45", "is_working":"true"},
+		{"client_name":"'Bohdan'", "age": "38", "is_working":"true"},
+		{"client_name":"'Michel'", "age": "25", "is_working":"false"}
 	],
 	"time_tab": [
-		{"name": "Name1", "surname": "Surname1"},
-		{"name": "Name2", "surname": "Surname2"},
-		{"name": "Name3", "surname": "Surname3"}
-	],
-	"credit": [
-		{"name": "department1"},
-		{"name": "department2"},
-		{"name": "department3"}
+		{"start_date": "'2010-03-15'", "end_date": "'2013-03-15'"},
+		{"start_date": "'2012-04-11'", "end_date": "'2016-04-23'"}
 	]
 }

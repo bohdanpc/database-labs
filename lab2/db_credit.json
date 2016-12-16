@@ -1,0 +1,6 @@
+{
+	"credit": [
+		{"client_id":"1", "time_id":"1", "bank_id":"1", "summa":"2500", "percentage":"0.5", "currency":"'USA'"},
+		{"client_id":"2", "time_id":"2", "bank_id":"2", "summa":"2100", "percentage":"2.3", "currency":"'RUS'"}
+	]
+}

@@ -21,7 +21,7 @@ import db
 
 def main_function():
     choice = ''
-    while choice != "4":
+    while choice != "5":
         choice = str(view.main_menu())
         if choice == "1":
             print "credits"
@@ -32,6 +32,8 @@ def main_function():
             desc, rows = db.select_table("client_tab")
             view.print_table(desc, rows)
         elif choice == "4":
+            db.fill_db_from_json()
+        elif choice == "5":
             view.exit_key()
         else:
             view.invalid_input()
