@@ -9,7 +9,7 @@ create table client_tab (client_id int primary key auto_increment,
 					     client_name varchar(30), age int, is_working boolean);
                      
 create table time_tab (time_id int primary key auto_increment,
-				       start_date date, end_time date);
+				       start_date date, end_date date);
                        
 create table bank_tab (bank_id int primary key auto_increment,
 					   bank_name varchar(30), is_solvent boolean);
@@ -21,3 +21,5 @@ create table credit (credit_id int primary key auto_increment,
 					 foreign key (client_id) references client_tab(client_id), 
                      foreign key (time_id) references time_tab(time_id),
                      foreign key (bank_id) references bank_tab(bank_id));
+                     
+select * from client_tab;

@@ -1,20 +1,24 @@
 import view
 import db
 
-def add_time():
+def add_time(time_id = -1):
     st_date = ""
     end_date = ""
     st_date += "'" + view.enter_value("start_date (YY-MM-DD): ") + "'"
     end_date += "'" + view.enter_value("end_date (YY-MM-DD): ") + "'"
 
-    lst_field = ["start_date", "end_date"]
-    lst_values = [st_date, end_date]
+    if time_id == -1:
+        lst_field = ["start_date", "end_date"]
+        lst_values = [st_date, end_date]
+    else:
+        lst_field = ["time_id", "start_date", "end_date"]
+        lst_values = [time_id, st_date, end_date]
 
     db.insert_table("time_tab", lst_field, lst_values)
     return db.max_pred("time_tab", "time_id")
 
 
-def add_client():
+def add_credit(credit_id = -1):
     desc, rows = db.select_table("bank_tab")
     view.print_table(desc, rows)
     bank_id = view.enter_value("bank_id: ")
@@ -25,28 +29,41 @@ def add_client():
 
     values = view.enter_value("summa, percentage, currency: ")
 
-    time_id = str(add_time())
-    time_id = time_id[1:-3]
-    lst_field = ["client_id", "time_id", "bank_id", "summa", "percentage", "currency"]
 
-    lst_values = [client_id, time_id, bank_id]
+    if (credit_id == -1):
+        time_id = str(add_time())
+        time_id = time_id[1:-3]
+        lst_field = ["client_id", "time_id", "bank_id", "summa", "percentage", "currency"]
+        lst_values = [client_id, time_id, bank_id]
+    else:
+        time_id = str(add_time(credit_id))
+        time_id = time_id[1:-3]
+        lst_field = ["credit_id", "client_id", "time_id", "bank_id", "summa", "percentage", "currency"]
+        lst_values = [credit_id, client_id, time_id, bank_id]
+
     lst_values += (values.split(" "))
 
     db.insert_table("credit", lst_field, lst_values)
 
 
-def del_client():
+def del_credit():
     credit_id = view.enter_value(" credit_id:")
     db.delete_query("credit", str("credit_id = " + credit_id))
+    db.delete_query("time_tab", str("time_id = " + credit_id))
+    return credit_id
 
+
+def update_credit():
+    credit_id = del_credit()
+    add_credit(credit_id)
 
 def credit_func(choice):
     if choice == "1":
-        add_client()
+        add_credit()
     elif choice == "2":
-        print "updating"
+        update_credit()
     elif choice == "3":
-        del_client()
+        del_credit()
 
 
 def main_function():
