@@ -61,3 +61,11 @@ def select_table(table, fields = '*', where = ''):
     return field_names, rows
 
 
+def max_pred(table, field):
+    connection = get_connection()
+
+    with connection:
+        cursor = connection.cursor()
+        cursor.execute("select max(" + field + ") from " + table)
+
+        return cursor.fetchone()
