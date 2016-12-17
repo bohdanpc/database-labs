@@ -2,7 +2,7 @@ import view
 import db
 
 def add_time():
-    st_date = "";
+    st_date = ""
     end_date = ""
     st_date += "'" + view.enter_value("start_date (YY-MM-DD): ") + "'"
     end_date += "'" + view.enter_value("end_date (YY-MM-DD): ") + "'"
@@ -31,8 +31,13 @@ def add_client():
 
     lst_values = [client_id, time_id, bank_id]
     lst_values += (values.split(" "))
-    print lst_values
+
     db.insert_table("credit", lst_field, lst_values)
+
+
+def del_client():
+    credit_id = view.enter_value(" credit_id:")
+    db.delete_query("credit", str("credit_id = " + credit_id))
 
 
 def credit_func(choice):
@@ -41,7 +46,7 @@ def credit_func(choice):
     elif choice == "2":
         print "updating"
     elif choice == "3":
-        print "deleting"
+        del_client()
 
 
 def main_function():

@@ -69,3 +69,11 @@ def max_pred(table, field):
         cursor.execute("select max(" + field + ") from " + table)
 
         return cursor.fetchone()
+
+def delete_query(table, clause):
+    connection = get_connection()
+
+    with connection:
+        cursor = connection.cursor()
+        print "delete from " + table + " where " + clause
+        cursor.execute("delete from " + table + " where " + clause)
