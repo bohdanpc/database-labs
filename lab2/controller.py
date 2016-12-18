@@ -66,6 +66,48 @@ def credit_func(choice):
         del_credit()
 
 
+def bank_func(choice):
+    if choice == "3":
+        return
+    elif choice == "1":
+        cond = " where is_solvent = true"
+    elif choice == "2":
+        cond = " where is_solvent = false"
+
+    desc, rows = db.select_table("bank_tab", "*", cond)
+    view.print_table(desc, rows)
+
+
+def client_func(choice):
+    if choice == "3":
+        return
+    elif choice == "1":
+        cond = " where is_working = true"
+    elif choice == "2":
+        cond = " where is_working = false"
+
+    desc, rows = db.select_table("client_tab", "*", cond)
+    view.print_table(desc, rows)
+
+
+def time_func(choice):
+    if choice != "2" and choice != "1":
+        return
+
+    st_date = ""
+    end_date = ""
+    st_date += "'" + view.enter_value("start_date (YY-MM-DD): ") + "'"
+    end_date += "'" + view.enter_value("end_date (YY-MM-DD): ") + "'"
+
+    if choice == "1":
+        column = "start_date"
+    else:
+        column = "end_date"
+
+    desc, rows = db.select_table("time_tab", "*", " where " + column + " between " + st_date + " and " + end_date)
+    view.print_table(desc, rows)
+
+
 def main_function():
     choice = ''
     while choice != "6":
@@ -75,15 +117,25 @@ def main_function():
             view.print_table(desc, rows)
             choice = str(view.credit_sub_menu())
             credit_func(choice)
+
         elif choice == "2":
             desc, rows = db.select_table("bank_tab")
             view.print_table(desc, rows)
+            choice = str(view.bank_sub_menu())
+            bank_func(choice)
+
         elif choice == "3":
             desc, rows = db.select_table("client_tab")
             view.print_table(desc, rows)
+            choice = str(view.client_sub_menu())
+            client_func(choice)
+
         elif choice == "4":
             desc, rows = db.select_table("time_tab")
             view.print_table(desc, rows)
+            choice = str(view.time_sub_menu())
+            time_func(choice)
+
         elif choice == "5":
             db.fill_db_from_json()
         elif choice == "6":
