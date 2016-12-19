@@ -1,0 +1,15 @@
+{
+	"bank_tab": [
+		{"bank_name": "'Privat'", "is_solvent": "true"},
+		{"bank_name": "'otpBank'", "is_solvent": "true"}
+	],
+	"client_tab": [
+		{"client_name":"'Margaret'", "age": "45", "is_working":"true"},
+		{"client_name":"'Bohdan'", "age": "38", "is_working":"true"},
+		{"client_name":"'Michel'", "age": "25", "is_working":"false"}
+	],
+	"time_tab": [
+		{"start_date": "'2010-03-15'", "end_date": "'2013-03-15'"},
+		{"start_date": "'2012-04-11'", "end_date": "'2016-04-23'"}
+	]
+}
